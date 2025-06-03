@@ -14,7 +14,8 @@
         </div>
         <h1 class="text-3xl tracking-tighter mb-3">All Users</h1>
         <div class="users flex gap-3 flex-wrap">
-            <% users.forEach(function (user) { %>
+            <%if(users.length>0){%>
+                <% users.forEach(function (user) { %>
                 <div class="user w-72 p-5 bg-zinc-800 rounded-lg">
                     <div class="w-full h-52 rounded-lg bg-blue-400">
                         <img src="<%= user.imageurl %>" alt="" class="w-full h-full object-cover overflow-hidden">
@@ -23,10 +24,13 @@
                     <h5 class="text-zinc-500"><%= user.email %></h5>
                     <div class="flex gap-3">
                         <a href="" class="text-zinc-500">Edit user</a>
-                        <a class="text-red-500" href="">Delete user</a>
+                        <a class="text-red-500" href="/delete/<%=user._id%>">Delete user</a>
                     </div>
                 </div>
             <% }); %>
+            <%}else{%>
+                <h2 class="text-blue-400">no Users yet</h2>
+            <%} %>
         </div>
     </div>
 </body>
